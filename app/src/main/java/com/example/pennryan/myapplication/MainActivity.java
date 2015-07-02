@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
 
         Gson gson = new Gson();
 
+        Gson gson1 = gson;
 
     }
 

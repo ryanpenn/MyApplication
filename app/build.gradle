@@ -1,4 +1,9 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
 
 android {
     compileSdkVersion 19
@@ -10,12 +15,82 @@ android {
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
+
+        // dex突破65535的限制
+        multiDexEnabled true
+        // 默认的渠道值
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    signingConfigs {
+        debug {
+            // No debug config
         }
+
+        release {
+            //storeFile file("../yourapp.keystore")
+            //storePassword "your password"
+            //keyAlias "your alias"
+            //keyPassword "your password"
+        }
+    }
+
+    buildTypes {
+        debug{
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            /*
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为myapp_v1.0_2015-01-15_channelID.apk
+                        def fileName = "myapp_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+            */
+        }
+    }
+
+    /*
+     <meta-data android:name="UMENG_CHANNEL" android:value="${UMENG_CHANNEL_VALUE}" />
+    */
+    /*
+    productFlavors {
+        wandoujia {}
+        _360 {}
+        baidu {}
+        xiaomi {}
+        tencent {}
+        taobao {}
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+    */
+
+    lintOptions{
+        abortOnError false
     }
 }
 
@@ -24,3 +99,17 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3.1'
 }
+
+/*
+./gradlew -v 版本号
+./gradlew clean 清除app目录下的build文件夹
+./gradlew build 检查依赖并编译打包
+
+./gradlew assembleDebug 编译并打Debug包
+./gradlew assembleRelease 编译并打Release的包
+
+./gradlew installRelease Release模式打包并安装
+./gradlew uninstallRelease 卸载Release模式包
+
+./gradlew assembleBaiduRelease 打指定渠道的包
+*/
