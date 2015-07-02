@@ -54,6 +54,9 @@ public class MainActivity extends Activity {
                     case 2:
                         startActivity(new Intent(MainActivity.this, SimpleListViewActivity.class));
                         break;
+                    case 3:
+                        startActivity(new Intent(MainActivity.this, CustomListViewActivity.class));
+                        break;
                     default:
                         break;
                 }

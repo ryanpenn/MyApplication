@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_array_list_view">ListView ArrayAdapter</string>
     <string name="title_activity_simple_list_view">SimpleListViewActivity</string>
+    <string name="title_activity_custom_list_view">CustomListViewActivity</string>
 
 </resources>

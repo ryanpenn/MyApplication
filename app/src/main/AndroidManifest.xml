@@ -24,6 +24,10 @@
             android:name=".SimpleListViewActivity"
             android:label="@string/title_activity_simple_list_view" >
         </activity>
+        <activity
+            android:name=".CustomListViewActivity"
+            android:label="@string/title_activity_custom_list_view" >
+        </activity>
     </application>
 
 </manifest>
