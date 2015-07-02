@@ -63,7 +63,10 @@ public class MainActivity extends Activity {
             }
         });
 
-        Log.i("LifeCycle", ++step + " : onCreate");
+        Log.i("LifeCycle", ++step + " : Activity.onCreate");
+
+        Intent intent = new Intent(this, MyService.class);
+        startService(intent);
     }
 
 
@@ -93,19 +96,19 @@ public class MainActivity extends Activity {
     protected void onStart() {
         super.onStart();
 
-        Log.i("LifeCycle", ++step + " : onStart");
+        Log.i("LifeCycle", ++step + " : Activity.onStart");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("LifeCycle", ++step + " : onPause");
+        Log.i("LifeCycle", ++step + " : Activity.onPause");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("LifeCycle", ++step + " : onResume");
+        Log.i("LifeCycle", ++step + " : Activity.onResume");
     }
 
     @Override
@@ -116,20 +119,23 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        Intent intent = new Intent(this, MyService.class);
+        stopService(intent);
+
         super.onDestroy();
-        Log.i("LifeCycle", ++step + " : onDestroy");
+        Log.i("LifeCycle", ++step + " : Activity.onDestroy");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i("LifeCycle", ++step + " : onSaveInstanceState");
+        Log.i("LifeCycle", ++step + " : Activity.onSaveInstanceState");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Log.i("LifeCycle", ++step + " : onRestoreInstanceState");
+        Log.i("LifeCycle", ++step + " : Activity.onRestoreInstanceState");
     }
 
 

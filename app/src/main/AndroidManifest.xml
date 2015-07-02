@@ -28,6 +28,12 @@
             android:name=".CustomListViewActivity"
             android:label="@string/title_activity_custom_list_view" >
         </activity>
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
