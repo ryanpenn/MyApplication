@@ -1,38 +1,66 @@
 package com.example.pennryan.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.LinearLayout;
-
-import com.google.gson.Gson;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends Activity {
 
+    static int step = 0;
 
-    @Bind(R.id.btn)
-    Button btn;
+    static final String[] strs = new String[] {
+        "Layout", "ListView - ArrayAdapter", "ListView - SimpleAdapter", "ListView - BaseAdapter", "MyView"
+    };
+
+    @Bind(R.id.tv)
+    TextView tv;
+
+    @Bind(R.id.lv)
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
 
-        LinearLayout ll = (LinearLayout)findViewById(R.id.ll);
-        MyView v = new MyView(this);
-        ll.addView(v);
+        tv.setText("MyApp");
 
-        Gson gson = new Gson();
+        lv.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                strs));
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-        Gson gson1 = gson;
+                switch (i) {
+                    case 0:
 
+                        break;
+                    case 1:
+                        startActivity(new Intent(MainActivity.this, ArrayListViewActivity.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(MainActivity.this, SimpleListViewActivity.class));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+        Log.i("LifeCycle", ++step + " : onCreate");
     }
 
 
@@ -57,4 +85,49 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Log.i("LifeCycle", ++step + " : onStart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("LifeCycle", ++step + " : onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("LifeCycle", ++step + " : onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("LifeCycle", ++step + " : onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("LifeCycle", ++step + " : onDestroy");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("LifeCycle", ++step + " : onSaveInstanceState");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i("LifeCycle", ++step + " : onRestoreInstanceState");
+    }
+
+
 }

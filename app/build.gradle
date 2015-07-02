@@ -17,9 +17,9 @@ android {
         versionName "1.0"
 
         // dex突破65535的限制
-        multiDexEnabled true
+        //multiDexEnabled true
         // 默认的渠道值
-        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
+        //manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]
     }
 
     signingConfigs {
@@ -50,9 +50,9 @@ android {
             // 不显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
 
-            minifyEnabled true
-            zipAlignEnabled true
-            shrinkResources true
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
 

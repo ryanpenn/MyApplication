@@ -1,4 +1,4 @@
-package com.example.pennryan.myapplication;
+package com.example.pennryan.myapplication.View;
 
 import android.content.Context;
 import android.graphics.Canvas;
