@@ -1,5 +1,6 @@
 package com.example.pennryan.myapplication;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -47,6 +48,9 @@ public class ImageViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_view);
         ButterKnife.bind(this);
+
+        ActionBar bar = getActionBar();
+        bar.hide();
 
         rQueue = Volley.newRequestQueue(this);
 

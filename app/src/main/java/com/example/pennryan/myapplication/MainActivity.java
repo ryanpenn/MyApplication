@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
     static int step = 0;
 
     static final String[] strs = new String[] {
-        "Layout", "ListView - ArrayAdapter", "ListView - SimpleAdapter", "ListView - BaseAdapter", "MyView"
+        "Layout", "ListView - ArrayAdapter", "ListView - SimpleAdapter", "ListView - BaseAdapter", "MyView", "Database"
     };
 
     @Bind(R.id.tv)
@@ -59,6 +59,9 @@ public class MainActivity extends Activity {
                         break;
                     case 4:
                         startActivity(new Intent(MainActivity.this, ImageViewActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, DataViewActivity.class));
                         break;
                     default:
                         break;

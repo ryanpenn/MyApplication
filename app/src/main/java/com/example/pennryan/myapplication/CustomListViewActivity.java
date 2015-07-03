@@ -1,5 +1,6 @@
 package com.example.pennryan.myapplication;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class CustomListViewActivity extends Activity {
         setContentView(R.layout.activity_custom_list_view);
         ButterKnife.bind(this);
 
+        ActionBar bar = getActionBar();
+        bar.setDisplayHomeAsUpEnabled(true);
+
         MyAdatper adatper = new MyAdatper(this);
         lv.setAdapter(adatper);
     }
@@ -55,6 +59,11 @@ public class CustomListViewActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == android.R.id.home) {
+            finish();
             return true;
         }
 
