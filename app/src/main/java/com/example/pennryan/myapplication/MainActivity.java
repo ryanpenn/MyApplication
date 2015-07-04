@@ -20,7 +20,8 @@ public class MainActivity extends Activity {
     static int step = 0;
 
     static final String[] strs = new String[] {
-        "Layout", "ListView - ArrayAdapter", "ListView - SimpleAdapter", "ListView - BaseAdapter", "MyView", "Database"
+        "Layout", "ListView - ArrayAdapter", "ListView - SimpleAdapter", "ListView - BaseAdapter"
+            , "MyView", "Database","float Window"
     };
 
     @Bind(R.id.tv)
@@ -62,6 +63,10 @@ public class MainActivity extends Activity {
                         break;
                     case 5:
                         startActivity(new Intent(MainActivity.this, DataViewActivity.class));
+                        break;
+                    case 6:
+                        startService(new Intent(MainActivity.this, FloatWindowService.class));
+                        finish();
                         break;
                     default:
                         break;
