@@ -9,5 +9,7 @@
     <string name="title_activity_custom_list_view">CustomListViewActivity</string>
     <string name="title_activity_image_view">ImageViewActivity</string>
     <string name="title_activity_data_view">DataViewActivity</string>
+    <string name="title_activity_fragments">FragmentsActivity</string>
+    <string name="title_activity_dynamic_fragments">DynamicFragmentsActivity</string>
 
 </resources>

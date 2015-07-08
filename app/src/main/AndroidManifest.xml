@@ -55,6 +55,15 @@
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <activity
+            android:name=".FragmentsActivity"
+            android:label="@string/title_activity_fragments" >
+        </activity>
+        <activity
+            android:name=".DynamicFragmentsActivity"
+            android:label="@string/title_activity_dynamic_fragments" >
+        </activity>
     </application>
 
 </manifest>
