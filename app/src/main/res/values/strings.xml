@@ -11,5 +11,6 @@
     <string name="title_activity_data_view">DataViewActivity</string>
     <string name="title_activity_fragments">FragmentsActivity</string>
     <string name="title_activity_dynamic_fragments">DynamicFragmentsActivity</string>
+    <string name="title_activity_action_bar">ActionBarActivity</string>
 
 </resources>

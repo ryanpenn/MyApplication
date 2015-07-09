@@ -21,7 +21,8 @@ public class MainActivity extends Activity {
 
     static final String[] strs = new String[] {
         "Layout", "ListView - ArrayAdapter", "ListView - SimpleAdapter", "ListView - BaseAdapter"
-            , "MyView", "Database","float Window", "fragment", "dynamic fragments"
+            , "MyView", "Database","float Window", "fragment", "dynamic fragments","actionBar"
+            , "wechat"
     };
 
     @Bind(R.id.tv)
@@ -73,6 +74,9 @@ public class MainActivity extends Activity {
                         break;
                     case 8:
                         startActivity(new Intent(MainActivity.this, DynamicFragmentsActivity.class));
+                        break;
+                    case 9:
+                        startActivity(new Intent(MainActivity.this, ActionBarActivity.class));
                         break;
                     default:
                         break;

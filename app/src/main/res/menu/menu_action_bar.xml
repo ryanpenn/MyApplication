@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.pennryan.myapplication.ActionBarActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_search_category_default"
+        android:actionViewClass="android.widget.SearchView"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/action_compose"
+        android:icon="@android:drawable/ic_menu_add"
+        android:showAsAction="always"
+        android:title="添加"/>
+
+    <item
+        android:id="@+id/action_share"
+        android:actionProviderClass="android.widget.ShareActionProvider"
+        android:showAsAction="ifRoom"
+        android:title="action share" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        />
+
+</menu>
